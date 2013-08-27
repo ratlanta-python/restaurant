@@ -11,7 +11,7 @@ class MenuItem(object):
 	return self.name
 
     def __repr__(self):
-	self.__str__()
+	return self.__str__()
 
 class LineItem(object):
     def __init__(self, item, quantity):
@@ -22,7 +22,7 @@ class LineItem(object):
 	return '{1}x {0}'.format(self.item, self.quantity)
 
     def __repr__(self):
-	self.__str__()
+	return self.__str__()
 
 class Receipt(object):
     def __init__(self):

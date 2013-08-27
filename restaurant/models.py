@@ -21,6 +21,9 @@ class LineItem(object):
     def __str__(self):
 	return '{1}x {0}'.format(self.item, self.quantity)
 
+    def __repr__(self):
+	self.__str__()
+
 class Receipt(object):
     def __init__(self):
 	pass	

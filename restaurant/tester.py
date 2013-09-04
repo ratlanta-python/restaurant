@@ -1,5 +1,4 @@
 class Tester(object):
-
     def __init__(self):
         from restaurant import models
         self.item = models.Item('Test', 'An example item', 4.23)

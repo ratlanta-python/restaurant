@@ -32,7 +32,7 @@ class LineItem(object):
         return self.__str__()
 
     def line_total(self):
-        return '{:.2f}'.format(self.total)
+        return '{:,.2f}'.format(self.total)
 
 
 class Receipt(object):
@@ -47,7 +47,7 @@ class Receipt(object):
     def __str__(self):
         receipt_lines = ['{:21}{:>9}'.format(line_item, '${:,.2f}'.format(line_item.total)) for line_item in self.line_items]
         receipt_lines.append('-' * 30)
-        receipt_lines.append('{:21}{:>9}'.format('TOTAL:', '${:,.2f}'.format(line_item.total)))
+        receipt_lines.append('{:21}{:>9}'.format('TOTAL:', '${:,.2f}'.format(self.total)))
         return '\n'.join(receipt_lines)
 
     def __repr__(self):

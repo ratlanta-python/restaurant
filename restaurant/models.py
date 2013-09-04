@@ -21,7 +21,10 @@ class Item(object):
 
 class Receipt(object):
     def __init__(self):
-        pass
+        self.line_items = []
+
+    def add_line_item(self, line_item):
+        self.line_items.append(line_item)
 
 
 class LineItem(object): 
@@ -30,4 +33,4 @@ class LineItem(object):
         self.quantity = quantity
 
     def __str__(self):
-        return '{1} {0}(s)'.format(self.item, self.quantity) 
+        return '{1}x {0}'.format(self.item, self.quantity) 

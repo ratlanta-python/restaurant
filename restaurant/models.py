@@ -24,7 +24,15 @@ class Receipt(object):
         self.line_items = []
 
     def add_line_item(self, line_item):
-        self.line_items.append(line_item)
+	    self.line_items.append(line_item)
+	
+    @property
+    def total(self):
+        if self.line_items:
+            prices = [line_item.total for line_item in self.line_items]
+            return sum(prices)
+        else:
+            return 0
 
 
 class LineItem(object): 
@@ -34,3 +42,7 @@ class LineItem(object):
 
     def __str__(self):
         return '{1}x {0}'.format(self.item, self.quantity) 
+    
+    @property
+    def total(self):
+        return self.quantity * self.item.price

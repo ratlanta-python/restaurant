@@ -27,7 +27,7 @@ class Receipt(object):
         self.line_items.append(line_item)
 
     @property
-    def total(self):
+    def subtotal(self):
         if self.line_items:  #line_items is not None, and is not empty
             prices = [line_item.total for line_item in self.line_items]
             return sum(prices)

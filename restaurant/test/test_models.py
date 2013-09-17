@@ -45,4 +45,12 @@ def test_calculated_tax_for_empty_receipt_is_zero():
     assert receipt.tax == 0
 
 
+def text_calculated_tax_for_single_item():
+    receipt = Receipt()
+    item = Item('Leinenkugel Creamy Dark Lager', 'Chippewa Falls, WI', 4.00)
+    line_item = LineItem(item, 1)
+
+    receipt.add_line_item(line_item)
+    assert receipt.tax == 0.32
+
 

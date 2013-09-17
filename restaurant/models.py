@@ -34,6 +34,10 @@ class Receipt(object):
         else: 
             return 0
 
+    @property
+    def tax(self):
+        return 0
+
 
 class LineItem(object): 
     def __init__(self, item, quantity):

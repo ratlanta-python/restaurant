@@ -39,10 +39,10 @@ def test_line_item_multiple_quantity_total_equals_quantity_times_price():
     line_item = LineItem(item, 3)
     assert line_item.total == 12.00
 
-
 def test_calculated_tax_for_empty_receipt_is_zero():
     receipt = Receipt()
 
     assert receipt.tax == 0
+
 
 

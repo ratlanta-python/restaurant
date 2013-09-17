@@ -1,3 +1,6 @@
+tax_rate = 0.08
+
+
 class Restaurant(object):
     pass
 
@@ -37,7 +40,7 @@ class Receipt(object):
     @property
     def tax(self):
         if self.line_items:
-            return 0.32
+            return self.subtotal * tax_rate
         else:
             return 0
 

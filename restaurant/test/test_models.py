@@ -53,4 +53,17 @@ def test_calculated_tax_for_single_item():
     receipt.add_line_item(line_item)
     assert receipt.tax == 0.32
 
+def test_calculated_tax_for_multiple_line_items():
+    receipt = Receipt()
+    item_1 = Item('Leinenkugel Creamy Dark Lager', 'Chippewa Falls, WI', 4.00)
+    line_item_1 = LineItem(item_1, 1)
+    receipt.add_line_item(line_item_1)
+    
+    item_2 = Item('Budweiser', 'St. Louis, MO', 3.50)
+    line_item_2 = LineItem(item_2, 2)
+    receipt.add_line_item(line_item_2)
+
+    assert receipt.tax == 0.88   
+
+
 

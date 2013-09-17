@@ -36,7 +36,10 @@ class Receipt(object):
 
     @property
     def tax(self):
-        return 0
+        if self.line_items:
+            return 0.32
+        else:
+            return 0
 
 
 class LineItem(object): 

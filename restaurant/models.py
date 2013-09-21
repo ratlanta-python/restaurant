@@ -1,3 +1,5 @@
+tax_rate = 8 # in cents
+
 class Restaurant(object):
     pass
 
@@ -36,12 +38,22 @@ class Receipt(object):
         return self.__str__()
 
     @property
-    def total(self):
+    def subtotal(self):
         if self.line_items:  #line_items is not None, and is not empty
             prices = [line_item.total for line_item in self.line_items]
             return sum(prices)
         else: 
             return 0
+
+    @property
+    def tax(self):
+        tax100 = self.subtotal * tax_rate
+        tax = tax100 / 100
+        return tax
+
+    @property
+    def total(self):
+        return self.subtotal + self.tax
 
 
 class LineItem(object): 

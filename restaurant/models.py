@@ -24,13 +24,14 @@ class Item(object):
 class Receipt(object):
     def __init__(self):
         self.line_items = []
-
-    def add_line_item(self, line_item):
-        self.line_items.append(line_item)
+        self.mytip = 0
 
     def __str__(self):
         receipt_lines = ['{:21}{:>9}'.format(line_item, '${:,.2f}'.format(line_item.total)) for line_item in self.line_items]
         receipt_lines.append('-' * 30)
+        receipt_lines.append('{:21}{:>9}'.format('SUBTOTAL:', '${:,.2f}'.format(self.subtotal)))
+        receipt_lines.append('{:21}{:>9}'.format('TAX:', '${:,.2f}'.format(self.tax)))
+        receipt_lines.append('{:21}{:>9}'.format('TIP:', '${:,.2f}'.format(self.tip)))
         receipt_lines.append('{:21}{:>9}'.format('TOTAL:', '${:,.2f}'.format(self.total)))
         return '\n'.join(receipt_lines)
 
@@ -53,7 +54,17 @@ class Receipt(object):
 
     @property
     def total(self):
-        return self.subtotal + self.tax
+        return self.subtotal + self.tax + self.tip
+
+    @property
+    def tip(self):
+        return self.mytip
+
+    def add_tip(self, tip):
+        self.mytip = tip
+
+    def add_line_item(self, line_item):
+        self.line_items.append(line_item)
 
 
 class LineItem(object): 

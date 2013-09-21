@@ -84,3 +84,23 @@ def test_total_for_receipt_with_multiple_items_is_total_of_items_and_tax():
     line_item_2 = LineItem(item_2, 2)
     receipt.add_line_item(line_item_2)
     assert receipt.total == 11.88
+
+def test_tip_before_adding_is_zero():
+    receipt = Receipt()
+    assert receipt.tip == 0
+
+def test_tip_after_adding_is_correct():
+    receipt = Receipt()
+    item = Item('Leinenkugel Creamy Dark Lager', 'Chippewa Falls, WI', 4.00)
+    line_item = LineItem(item, 1)
+    receipt.add_line_item(line_item)
+    receipt.add_tip(2.00)
+    assert receipt.tip == 2.00
+
+def test_receipt_total_after_adding_tip_includes_tip():
+    receipt = Receipt()
+    item = Item('Leinenkugel Creamy Dark Lager', 'Chippewa Falls, WI', 4.00)
+    line_item = LineItem(item, 1)
+    receipt.add_line_item(line_item)
+    receipt.add_tip(2.00)
+    assert receipt.total ==  6.32

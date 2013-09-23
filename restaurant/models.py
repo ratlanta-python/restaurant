@@ -66,6 +66,9 @@ class Receipt(object):
     def add_line_item(self, line_item):
         self.line_items.append(line_item)
 
+    def calculate_tip(self, percentage):
+        return 0
+
 
 class LineItem(object): 
     def __init__(self, item, quantity):

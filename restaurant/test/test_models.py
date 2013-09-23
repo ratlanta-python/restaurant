@@ -104,3 +104,9 @@ def test_receipt_total_after_adding_tip_includes_tip():
     receipt.add_line_item(line_item)
     receipt.add_tip(2.00)
     assert receipt.total ==  6.32
+
+def test_calculate_tip_for_empty_receipt_is_zero():
+    receipt = Receipt()
+
+    assert receipt.calculate_tip(18) == 0
+

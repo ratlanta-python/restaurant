@@ -24,7 +24,7 @@ class Item(object):
 class Receipt(object):
     def __init__(self):
         self.line_items = []
-        self.mytip = 0
+        self._tip = 0
 
     def __str__(self):
         receipt_lines = ['{:21}{:>9}'.format(line_item, '${:,.2f}'.format(line_item.total)) for line_item in self.line_items]
@@ -58,10 +58,10 @@ class Receipt(object):
 
     @property
     def tip(self):
-        return self.mytip
+        return self._tip
 
     def add_tip(self, tip):
-        self.mytip = tip
+        self._tip = tip
 
     def add_line_item(self, line_item):
         self.line_items.append(line_item)

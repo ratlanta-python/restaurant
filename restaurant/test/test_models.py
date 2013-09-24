@@ -105,6 +105,7 @@ def test_receipt_total_after_adding_tip_includes_tip():
     receipt.add_tip(2.00)
     assert receipt.total ==  6.32
 
+
 def test_calculate_tip_for_empty_receipt_is_zero():
     receipt = Receipt()
 
@@ -119,5 +120,15 @@ def test_calculate_tip_for_zero_percent_is_zero():
 
     assert receipt.total > 0
     assert receipt.calculate_tip(0) == 0
+
+
+def test_calculate_tip_for_non_empty_receipt_and_positive_percentage_is_correct():
+    receipt = Receipt()
+    item = Item('Leinenkugel Creamy Dark Lager', 'Chippewa Falls, WI', 4.00)
+    line_item = LineItem(item, 1)
+    receipt.add_line_item(line_item)    
+
+    assert receipt.calculate_tip(20) == 0.80
+
 
 

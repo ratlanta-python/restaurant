@@ -67,7 +67,12 @@ class Receipt(object):
         self.line_items.append(line_item)
 
     def calculate_tip(self, percentage):
-        return 0
+        """Calculates the tip from a percentage.
+
+        Arguments:
+            percentage -- The percentage for the tip, as a whole number (e.g., 20 = 20%)
+        """
+        return self.subtotal * percentage / 100
 
 
 class LineItem(object): 

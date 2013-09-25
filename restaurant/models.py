@@ -48,9 +48,7 @@ class Receipt(object):
 
     @property
     def tax(self):
-        tax100 = self.subtotal * tax_rate
-        tax = tax100 / 100
-        return tax
+        return self.subtotal * tax_rate / 100
 
     @property
     def total(self):

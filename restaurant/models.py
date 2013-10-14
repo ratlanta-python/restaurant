@@ -7,6 +7,23 @@ class Restaurant(object):
 class Menu(object):
     pass
 
+class Category(object):
+    def __init__(self, name, items=[]):
+        self.name = name
+        self.items = items
+
+
+    def add_item(self, item):
+        self.items.append(item)
+
+
+    def __str__(self):
+        return self.name
+
+
+    def __repr__(self):
+        return self.__str__()
+
 
 class Item(object):
     def __init__(self, name, description, price):

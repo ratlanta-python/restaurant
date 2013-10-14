@@ -1,5 +1,5 @@
 import pytest
-from restaurant.models import Receipt, LineItem, Item
+from restaurant.models import Receipt, LineItem, Item, Category
 
 def test_empty_receipt_test_subtotal_is_zero():
     receipt = Receipt()
@@ -130,5 +130,11 @@ def test_calculate_tip_for_non_empty_receipt_and_positive_percentage_is_correct(
 
     assert receipt.calculate_tip(20) == 0.80
 
+def test_item_added_to_empty_category_exists():
+    category = Category("Beer")
+    item = Item('Leinenkugel Creamy Dark Lager', 'Chippewa Falls, WI', 4.00)
+
+    category.add_item(item);
+    assert item in category.items
 
 

@@ -138,3 +138,20 @@ def test_item_added_to_empty_category_exists():
     assert item in category.items
 
 
+def test_two_categories_have_separate_items():
+    category_1 = Category("Beer")
+    category_2 = Category("Appetizers")
+
+    beer = Item('Leinenkugel Creamy Dark Lager', 'Chippewa Falls, WI', 4.00)
+    quesadillas = Item('Quesadillas', 'Steak or chicken in a grilled flour tortilla with melted cheese', 8.25)
+
+    category_1.add_item(beer)
+    category_2.add_item(quesadillas)
+
+    assert beer in category_1.items
+    assert quesadillas in category_2.items
+
+    assert beer not in category_2.items
+    assert quesadillas not in category_1.items
+
+

@@ -8,9 +8,9 @@ class Menu(object):
     pass
 
 class Category(object):
-    def __init__(self, name, items=[]):
+    def __init__(self, name, items=None):
         self.name = name
-        self.items = items
+        self.items = items or []
 
 
     def add_item(self, item):

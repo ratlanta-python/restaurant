@@ -155,3 +155,14 @@ def test_two_categories_have_separate_items():
     assert quesadillas not in category_1.items
 
 
+def test_can_add_items_to_category_with_existing_items():
+    item_1 = Item('Leinenkugel Creamy Dark Lager', 'Chippewa Falls, WI', 4.00)
+    item_2 = Item('Budweiser', 'St. Louis, MO', 3.50)
+    item_3 = Item('PBR', 'Some really obscure place you probably never heard of', 3.25)
+
+    category = Category("Beer", [item_1, item_2])
+    category.add_item(item_3)
+
+    assert item_1 in category.items
+    assert item_2 in category.items
+    assert item_3 in category.items
